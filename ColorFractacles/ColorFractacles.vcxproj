@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4478710F-E6DC-43ED-9DE7-653AA74C9A9F}</ProjectGuid>
+    <ProjectGuid>{D137748B-D275-4C87-98E4-B558328AB0BF}</ProjectGuid>
     <RootNamespace>HodginParticlesRedux</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>MyCinder</ProjectName>
+    <ProjectName>ColorFractacles</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -191,31 +191,16 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resource\bump.png" />
-    <Image Include="resource\emitter.png" />
-    <Image Include="resource\normal.png" />
-    <Image Include="resource\particle.png" />
-    <Image Include="resource\specExponent.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resource\emitter_frag.glsl" />
-    <None Include="resource\emitter_vert.glsl" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\lib\ColorAssociation.h" />
-    <ClInclude Include="MyFractalsBase.h" />
-    <ClInclude Include="MyFractalsColor.h" />
-    <ClInclude Include="MyFractalsConstraint.h" />
-    <ClInclude Include="MyFractalsParam.h" />
+    <ClInclude Include="MyParticle1.h" />
+    <ClInclude Include="MyParticleBase.h" />
     <ClInclude Include="param.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\lib\ColorAssociation.cpp" />
     <ClCompile Include="CinderTemplateApp.cpp" />
-    <ClCompile Include="MyFractalsBase.cpp" />
-    <ClCompile Include="MyFractalsColor.cpp" />
-    <ClCompile Include="MyFractalsConstraint.cpp" />
-    <ClCompile Include="MyFractalsParam.cpp" />
+    <ClCompile Include="MyParticle1.cpp" />
+    <ClCompile Include="MyParticleBase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
