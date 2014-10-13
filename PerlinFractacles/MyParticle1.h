@@ -6,19 +6,23 @@
 #include "ColorAssociation.h"
 
 const int NUM_OF_PERLIN = 3;
-const int TOTAL_PARTICLES     = 300;
+
+const int TOTAL_H_PARTICLES = 100;
+const int TOTAL_PARTICLES = TOTAL_H_PARTICLES*TOTAL_H_PARTICLES;
 
 class MyParticle1 : public MyParticleBase
 {
 protected:
 	unsigned int      mNumber;
 	ci::Vec2f	      mLoc;
-	ci::Vec2f	      mSpeed;
+	float             mfBaseRadius;
+	Perlin            *mPerlin;
+
 	CColorAssociation mCol;
 
 	float             mfRadius;
 	float             mfTone;
-	bool              mfLife;
+
 
 public:
 	virtual bool draw();

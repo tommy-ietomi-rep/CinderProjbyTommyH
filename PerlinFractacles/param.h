@@ -16,9 +16,9 @@ const char          IMAGE_PATH[100]    = "F:\\GenArt\\ColorParticles\\ColorParti
 const char          IMAGE_EXT[100]     = "tiff";
 
 //Back Ground Color Settings
-const float         BG_COL_R = 1.0;
-const float         BG_COL_G = 1.0;
-const float         BG_COL_B = 1.0;
+const float         BG_COL_R = 0.9*0.9;
+const float         BG_COL_G = 0.95*0.9;
+const float         BG_COL_B = 1.0*0.9;
 
 //test
 const int PERLIN_SEED[20]     = {111,222,333,444,555,666,777,888,9,71,84,87,87,4,15,41,541,5415,541};

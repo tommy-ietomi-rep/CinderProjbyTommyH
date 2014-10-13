@@ -11,69 +11,39 @@ const float MOVIE_TIME  = 150.0f;//sec
 
 bool MyParticle1::draw(){
 
-	if(this->mfLife){
-		gl::color(mCol.getRGB());
-		gl::drawSolidCircle( mLoc, mfRadius );
-	}
+
+	gl::color(mCol.getRGB());
+
+	gl::drawSolidCircle( mLoc, mfRadius );
+	
 	return true;
 };
 
-bool MyParticle1::setup(Perlin *perlin,unsigned int uiNUmber){
+bool MyParticle1::setup(Perlin *perlin,unsigned int v){
 
-	this->mfLife    = false;
-	this->mNumber   = uiNUmber;
+
+	this->mNumber      = v;
+	this->mfBaseRadius = (MOVIE_WIDTH / TOTAL_H_PARTICLES) / 2;
 	
-	float fTmpRand  = perlin[0].fBm((float)this->mNumber*NUM_COF_RAD)*4.0f+0.5f;
-	this->mLoc.y    = MOVIE_HEIGHT*(0.15f+0.7f * fTmpRand);
-	this->mfRadius  = (float)(fTmpRand/2.0+0.5)*RADIUS_SIZE;
-
-	//console() << fTmpRand  << std::endl;
-
-	this->mfTone = 0.8f*(perlin[1].fBm(this->mNumber*NUM_COF_TONE)+0.5f);
+	this->mLoc.y = (v%TOTAL_H_PARTICLES) * 2 * mfBaseRadius + mfBaseRadius;
+	this->mLoc.x = floor(v / TOTAL_H_PARTICLES) * 2 * mfBaseRadius + mfBaseRadius;
 	
+	this->mPerlin = perlin;
+
 	return true;
 };
 
 bool MyParticle1::update(unsigned int uiTime){
 
-	if(this->mfLife){
-		//idou
-		this->mSpeed.x *= 1.001;
-		this->mLoc.x += this->mSpeed.x;
-		this->mSpeed.y *= 1.002;
-		this->mLoc.y += this->mSpeed.y;
-		
-		//shibouhantei
-		if (this->mLoc.x<-RADIUS_SIZE*1.5 || this->mLoc.y>MOVIE_WIDTH || this->mLoc.y<0){
-			this->mfLife = false;
-			
-		}
-	}else{
-		//Time
-		unsigned int    iThres = (unsigned int)MOVIE_TIME * (unsigned int)MOVIE_FPS *2 /3;
-		unsigned int    iTime  = (uiTime<iThres)? uiTime : iThres + (unsigned int)pow(uiTime-iThres,1.17);
+	ci::Vec3f	      mNoise = mPerlin[0].dfBm(mLoc.x / MOVIE_WIDTH * 3, mLoc.y / MOVIE_WIDTH * 3, uiTime / MOVIE_TIME*2);
 
-		unsigned int    iNumTh = iThres / TOTAL_PARTICLES;
 
-		if( uiTime/iNumTh >= this->mNumber && uiTime < MOVIE_TIME * MOVIE_FPS ){
+	this->mfRadius = this->mfBaseRadius*  sqrt(mNoise.x);
+	//this->mfTone   = sqrt(abs(mNoise.y));
+	//float dHue     = sqrt(mNoise.z)*360.0;
 
-			//birth of Particle
-			this->mfLife = true;
-
-			//Location & Speed SetUp
-			this->mLoc.x    = MOVIE_WIDTH + RADIUS_SIZE*1.5f;
-			
-			this->mSpeed.x  = Rand::randFloat(-2,-1);
-			this->mSpeed.y  = Rand::randFloat(-0.5,0.5);
-
-			float dTimeCof = 380.0f / (float)iThres;
-			float dHue     = (float)((int)(START_HUE+iTime*dTimeCof)%360);
-
-			//SetColor
-			mCol.setTONE3(dHue,this->mfTone);
-
-		}
-	}
+	//mCol.setTONE3(dHue,this->mfTone);
+	mCol.setRGB(Color(1.0, 1.0, 1.0));
 
 	return true;
 };
