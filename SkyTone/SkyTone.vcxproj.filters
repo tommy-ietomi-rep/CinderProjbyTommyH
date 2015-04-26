@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="CinderTemplateApp.cpp">
+      <Filter>Src Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ColorAssociation.cpp">
+      <Filter>Src Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyParticle1.cpp">
+      <Filter>Src Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyParticleBase.cpp">
+      <Filter>Src Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyParticleBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="param.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyParticle1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\ColorAssociation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{dbabb36a-9d99-440c-88da-bb55ea83c844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src Files">
+      <UniqueIdentifier>{53e687de-5d52-46c8-8074-29564bdb8fb4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

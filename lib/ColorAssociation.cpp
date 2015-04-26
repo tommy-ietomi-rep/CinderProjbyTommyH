@@ -297,3 +297,52 @@ void CColorAssociation::debug(){
 		cinder::writeImage(fn, sf );
 	}
 };
+
+
+
+
+void CColorAssociationA::setRGB(cinder::ColorA &daRGB){
+	cinder::Color rgb;
+	rgb.r = daRGB.r;
+	rgb.g = daRGB.g;
+	rgb.b = daRGB.b;
+
+	this->dAch = daRGB.a;
+
+	CColorAssociation::setRGB(rgb);
+
+	return;
+};
+
+cinder::ColorA CColorAssociationA::getRGB(){
+	cinder::Color rgb = CColorAssociation::getRGB();
+
+	cinder::ColorA rgba;
+	rgba.r = rgb.r;
+	rgba.g = rgb.g;
+	rgba.b = rgb.b;
+	rgba.a = this->dAch;
+
+	return rgba;
+
+};
+
+CColorAssociationA::CColorAssociationA(void){
+	CColorAssociation::CColorAssociation();
+	this->dAch = 1.0;
+};
+
+CColorAssociationA::CColorAssociationA(float Lch, float Cch, float Hch, float Ach){
+	CColorAssociation::CColorAssociation(Lch, Cch, Hch);
+	this->dAch = Ach;
+};
+
+CColorAssociationA::CColorAssociationA(CColorAssociationA &copy){
+	this->dAch = copy.dAch;
+	this->dLch = copy.dLch;
+	this->dCch = copy.dCch;
+	this->dHch = copy.dHch;
+};
+
+
+
