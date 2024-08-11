@@ -11,7 +11,6 @@ const float MOVIE_TIME  = 150.0f;//sec
 
 bool MyParticle1::draw(){
 
-
 	gl::color(mCol.getRGB().r, mCol.getRGB().g, mCol.getRGB().b,0.2);
 
 	gl::drawSolidCircle( mLoc, mfRadius );
